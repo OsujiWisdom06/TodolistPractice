@@ -14,11 +14,11 @@ export default defineConfig({
         'pwa-512x512.png'
       ],
       manifest: {
-        name: 'My Vite App',
-        short_name: 'ViteApp',
+        name: 'Todo-List',
+        short_name: 'Todo-List',
         description: 'A Progressive Web App built with Vite and React',
         theme_color: '#ffffff',
-        background_color: '#ffffff',
+        background_color: 'yellow',
         display: 'standalone',
         start_url: '/',
         icons: [

@@ -3,30 +3,24 @@ import "../styles/todolist.css"
 
 const Todolist = () => {
 
-    const [tasks, setTasks] = useState([])
-    const [newTask, setNewTask] = useState("")
+  const [tasks, setTasks] = useState([])
+  const [newTask, setNewTask] = useState("")
 
-    const handleInputChange = (e) => {
-        setNewTask(e.target.value)
-    }
+  const handleInputChange = (e) => {
+    setNewTask(e.target.value)
+  }
 
-    const addTask = () => {
-      if (!newTask.trim()) {
-         alert("please enter a task")
-      } else if (tasks.includes(newTask.trim())){
-        alert("task already exist are you sure you want to add task?")
-      } else {
-        setTasks([...tasks, newTask.trim()])
-        setNewTask("")
-      }
-    }
+  const addTask = () => {
+   if (!newTask.trim()) {
+    alert("Please add a task")
 
-    const deleteTask = (index) => {
-        const updatedTasks = tasks.filter((_, i) => i !== index);
-        setTasks(updatedTasks);
-     }
-
-
+   } else if (tasks.includes(newTask.trim())) {
+    alert("Task already exist")
+   } else{
+     setTasks([...tasks, newTask])
+     setNewTask("")
+   }
+  }
 
   return (
     <div className='Todolist-main-body'>
@@ -42,11 +36,11 @@ const Todolist = () => {
                 <div className='all-my-task-div-wrap'>
                 {
                 tasks.map((task, index)=>(
-                    <div className='all-my-task-task-main' key={index}>
-                    <div className='all-my-task-main-task-inner'>{task}</div>
+                    <div className='all-my-task-task-main'>
+                    <div key={index} className='all-my-task-main-task-inner'>{task}</div>
                     <div className='all-my-task-main-task-inner-edit-delete'>
                         <button className='edit-btn'>Edit</button>
-                        <button onClick={()=> deleteTask(index)} className='delete-btn'>Delete</button>
+                        <button className='delete-btn'>Delete</button>
                     </div>
                 </div>
                 ))

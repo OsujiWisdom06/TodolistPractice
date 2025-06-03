@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 const InstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPrompt, setShowPrompt] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
@@ -25,6 +27,8 @@ const InstallPrompt = () => {
       deferredPrompt.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
           console.log('User accepted the install prompt');
+          setShowToast(true);
+          setTimeout(() => setShowToast(false), 4000);
         } else {
           console.log('User dismissed the install prompt');
         }
@@ -60,6 +64,22 @@ const InstallPrompt = () => {
         </button>
       )}
 
+      {showToast && (
+        <div style={{
+          position: 'fixed',
+          bottom: '80px',
+          right: '20px',
+          backgroundColor: '#4BB543',
+          color: '#fff',
+          padding: '12px 20px',
+          borderRadius: '5px',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          zIndex: 1000,
+          animation: 'fadeInOut 4s ease-in-out'
+        }}>
+           installed successfully!✅
+        </div>
+      )}
 
       <style>
         {`
@@ -67,6 +87,13 @@ const InstallPrompt = () => {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+          }
+
+          @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(10px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
           }
         `}
       </style>

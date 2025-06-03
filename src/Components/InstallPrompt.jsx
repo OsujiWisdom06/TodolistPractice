@@ -3,23 +3,7 @@ import { useEffect, useState } from 'react';
 const InstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPrompt, setShowPrompt] = useState(false);
-  const [isSupported, setIsSupported] = useState(true);
-  const [platform, setPlatform] = useState('');
-
   useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-
-    if (userAgent.includes('safari') && !userAgent.includes('chrome')) {
-      setPlatform('safari');
-      setIsSupported(false);
-    } else if (userAgent.includes('firefox')) {
-      setPlatform('firefox');
-      setIsSupported(false);
-    } else {
-      setPlatform('chrome');
-      setIsSupported(true);
-    }
-
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -52,8 +36,6 @@ const InstallPrompt = () => {
 
   return (
     <div style={{ textAlign: 'center', padding: '2rem' }}>
-      <h1>Welcome to my App</h1>
-
       {isSupported && showPrompt && (
         <button
           onClick={handleInstallClick}
@@ -78,17 +60,6 @@ const InstallPrompt = () => {
         </button>
       )}
 
-      {!isSupported && platform === 'safari' && (
-        <p style={{ marginTop: '20px', fontSize: '14px', color: '#555' }}>
-          To install this app on Safari, tap the <strong>Share</strong> icon and select <strong>“Add to Home Screen”</strong>.
-        </p>
-      )}
-
-      {!isSupported && platform === 'firefox' && (
-        <p style={{ marginTop: '20px', fontSize: '14px', color: '#555' }}>
-          In Firefox, open the browser menu and click <strong>“Install”</strong> to add this app.
-        </p>
-      )}
 
       <style>
         {`

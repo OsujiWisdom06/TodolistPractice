@@ -31,9 +31,9 @@ const InstallPrompt = () => {
           setShowToast(true);
           setTimeout(() => {
             setShowToast(false);
-          }, 2000);
+          }, 4000);
 
-        }, 10000);
+        }, 6000);
 
       } else {
         console.log('User dismissed the install prompt');

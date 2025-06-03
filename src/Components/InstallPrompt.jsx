@@ -28,7 +28,7 @@ const InstallPrompt = () => {
         if (choice.outcome === 'accepted') {
           console.log('User accepted the install prompt');
           setShowToast(true);
-          setTimeout(() => setShowToast(false), 4000);
+          setTimeout(() => setShowToast(false), 10000);
         } else {
           console.log('User dismissed the install prompt');
         }

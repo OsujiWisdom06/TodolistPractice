@@ -35,8 +35,8 @@ const InstallPrompt = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', padding: '2rem' }}>
-      {isSupported && showPrompt && (
+    <div>
+      {showPrompt && (
         <button
           onClick={handleInstallClick}
           style={{

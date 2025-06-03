@@ -21,22 +21,29 @@ const InstallPrompt = () => {
     };
   }, []);
 
-  const handleInstallClick = () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choice) => {
-        if (choice.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
+ const handleInstallClick = () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choice) => {
+      if (choice.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+        setTimeout(() => {
           setShowToast(true);
-          setTimeout(() => setShowToast(false), 10000);
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        setDeferredPrompt(null);
-        setShowPrompt(false);
-      });
-    }
-  };
+          setTimeout(() => {
+            setShowToast(false);
+          }, 2000);
+
+        }, 10000);
+
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+
+      setDeferredPrompt(null);
+      setShowPrompt(false);
+    });
+  }
+};
 
   return (
     <div>

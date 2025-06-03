@@ -74,11 +74,6 @@ const InstallPrompt = () => {
             zIndex: 999
           }}
         >
-          <img
-            src="/icons/icon-192x192.png"
-            alt="Install Icon"
-            style={{ width: '24px', height: '24px' }}
-          />
           Install App
         </button>
       )}

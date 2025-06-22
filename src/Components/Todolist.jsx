@@ -22,6 +22,11 @@ const Todolist = () => {
    }
   }
 
+  const deleteTask = (index) => {
+    const updatedTask = tasks.filter((_ , i)=> i !== index )
+    setTasks(updatedTask)
+  }
+
   return (
     <div className='Todolist-main-body'>
         <div className='Todolist-main-content'>
@@ -40,7 +45,7 @@ const Todolist = () => {
                     <div key={index} className='all-my-task-main-task-inner'>{task}</div>
                     <div className='all-my-task-main-task-inner-edit-delete'>
                         <button className='edit-btn'>Edit</button>
-                        <button className='delete-btn'>Delete</button>
+                        <button className='delete-btn' onClick={()=>deleteTask(index)}>Delete</button>
                     </div>
                 </div>
                 ))
